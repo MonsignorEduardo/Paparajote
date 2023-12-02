@@ -1,15 +1,9 @@
-# paparajote
+# Paparajote
 
-To install dependencies:
+## Descripción
 
-```bash
-bun install
-```
+Bot de Telegram que a partir de un link de Spotify, Youtube o Apple Music, devuelve un enlace a la canción en las otras plataformas.
 
-To run:
+## Instalación
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.0.15. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+O bien clonando el repositorio instalando las dependencias y ejecutarlo con bun.sh o bien con docker.

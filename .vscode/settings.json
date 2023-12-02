@@ -1,3 +1,6 @@
 {
-    "cSpell.words": ["grammy", "songwhip", "Youtube"]
+    "cSpell.words": ["buildx", "Buildx", "github", "GITHUB", "grammy", "Paparajote", "songwhip", "Youtube"],
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/monsignor/projectos/Paparajote/.github/docker-image.yml"
+    }
 }
