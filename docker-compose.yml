@@ -1,6 +1,6 @@
 services:
     paparajote:
-        image: ghcr.io/monsignoreduardo/paparajote:master
+        image: ghcr.io/monsignoreduardo/paparajote:latest
         restart: unless-stopped
         environment:
             TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
