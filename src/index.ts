@@ -3,7 +3,7 @@ import { Bot, type Context } from 'grammy'
 
 import { fetchSong, SongUrlSchema } from './songwhip/fetch-song'
 
-const TOKEN = Bun.env.bot_token as string
+const TOKEN = Bun.env.TELEGRAM_TOKEN as string
 
 type MyContext = HydrateFlavor<Context>
 const bot = new Bot<MyContext>(TOKEN)

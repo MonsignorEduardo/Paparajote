@@ -1,0 +1,7 @@
+services:
+    paparajote:
+        image: ghcr.io/monsignoreduardo/paparajote:master
+        restart: unless-stopped
+        environment:
+            TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+networks: {}
