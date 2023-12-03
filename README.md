@@ -19,5 +19,5 @@ docker compose up -d
 ```
 
 ## Ejemplo de uso
-
+El bot esta en telegram como `https://t.me/paparajote_bot` por si lo quereis usar sin selfhostear
 ![Ejemplo de uso](https://edu.lifes-a-me.me/6lpM1xvza.gif)
