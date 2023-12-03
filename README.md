@@ -1,5 +1,7 @@
 # Paparajote
 
+![Icono](https://edu.lifes-a-me.me/6lpMSfI5o.jpeg)
+
 ## Descripción
 
 Bot de Telegram que a partir de un link de Spotify, Youtube o Apple Music, devuelve un enlace a la canción en las otras plataformas.
@@ -15,3 +17,7 @@ Necesitas un token de Telegram en la variable de entorno `TELEGRAM_TOKEN`
 ```bash
 docker compose up -d
 ```
+
+## Ejemplo de uso
+
+![Ejemplo de uso](https://edu.lifes-a-me.me/6lpM1xvza.gif)

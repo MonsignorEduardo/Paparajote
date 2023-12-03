@@ -1,3 +1,4 @@
+import { autoRetry } from '@grammyjs/auto-retry'
 import { hydrate, type HydrateFlavor } from '@grammyjs/hydrate'
 import { Bot, type Context } from 'grammy'
 
@@ -5,19 +6,20 @@ import { fetchSong, SongUrlSchema } from './songwhip/fetch-song'
 
 const TOKEN = Bun.env.TELEGRAM_TOKEN as string
 
+// BOT SETUP
 type MyContext = HydrateFlavor<Context>
 const bot = new Bot<MyContext>(TOKEN)
 bot.use(hydrate())
+bot.api.config.use(autoRetry())
 
+// BOT COMMANDS
 // Suggest commands to the user
 await bot.api.setMyCommands([
     { command: 'start', description: 'Start the bot' },
     { command: 'song', description: 'Obtains multiple links for the song' },
 ])
 
-// Start command
 bot.command('start', async (ctx) => await ctx.reply('Welcome! Up and running.'))
-
 bot.command('song', async (ctx) => {
     const message = SongUrlSchema.safeParse({ url: ctx.match })
 
@@ -28,6 +30,9 @@ bot.command('song', async (ctx) => {
     const statusMessage = await ctx.reply('Buscando en cuenca tu canción...')
 
     const song = await fetchSong(message.data.url)
+    if (song === null) {
+        return await statusMessage.editText('No se ha encontrado tu canción, lo siento')
+    }
     await statusMessage.editText('Encontrada tu canción, ahora te la mando si eso...')
 
     const apple = song.data.item.links.itunes
@@ -61,6 +66,9 @@ bot.on('message', async (ctx) => {
         const statusMessage = await ctx.reply('Buscando en cuenca tu canción...')
 
         const song = await fetchSong(message.data.url)
+        if (song === null) {
+            return await statusMessage.editText('No se ha encontrado tu canción, lo siento')
+        }
         await statusMessage.editText('Encontrada tu canción, ahora te la mando si eso...')
 
         const apple = song.data.item.links.itunes

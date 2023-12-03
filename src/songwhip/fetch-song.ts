@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { type Root } from './model'
 
-export const fetchSong = async (url: string): Promise<Root> => {
+export const fetchSong = async (url: string): Promise<Root | null> => {
     const data = await fetch('https://songwhip.com/api/songwhip/create', {
         headers: {
             'content-type': 'application/json',
@@ -20,6 +20,11 @@ export const fetchSong = async (url: string): Promise<Root> => {
         mode: 'cors',
         credentials: 'omit',
     })
+    if (data.status !== 200) {
+        console.error('Error fetching song', data)
+        return null
+    }
+
     return await data.json<Root>()
 }
 
